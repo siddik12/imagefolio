@@ -1,7 +1,7 @@
 <?php
 define("APP_PATH", dirname(__FILE__));
-define("GALLERY_PATH", $_SERVER['DOCUMENT_ROOT'] . "/Gallery");
-
+define("GALLERY_PATH", $_SERVER['DOCUMENT_ROOT'] . "/Gallery/");
+$originalImage = $_REQUEST['img'];
 ?>
 
 <!doctype html>
@@ -11,7 +11,6 @@ define("GALLERY_PATH", $_SERVER['DOCUMENT_ROOT'] . "/Gallery");
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
     <title>Imagefolio</title>
 </head>
@@ -30,8 +29,10 @@ define("GALLERY_PATH", $_SERVER['DOCUMENT_ROOT'] . "/Gallery");
             <div class="card">
                 <div class="card-body">
                     <div class="editor-panel">
-                        <canvas id="myCanvas"></canvas>
-                        <img src="Gallery/<?php echo $_REQUEST['img'] ?>" width="500" id="image">
+                        <div class="image">
+                            <img src="Gallery/<?php echo $originalImage ?>" width="500" id="image">
+                        </div>
+
                         <div>
 
                            <div class="rotate">
@@ -51,22 +52,23 @@ define("GALLERY_PATH", $_SERVER['DOCUMENT_ROOT'] . "/Gallery");
 
                             <div class="col">
                                 <div class="gallery">
-                                <div class="filter-img">
-                                    <img src="Gallery/<?php echo $_REQUEST['img'] ?>" width="100" id="original"  onclick="applyOriginal()">
-                                    <p>Original</p>
-                                </div>
-                                <div class="filter-img">
-                                    <img src="Gallery/<?php echo $_REQUEST['img'] ?>" width="100" id="grayscale" style="filter: grayscale(1)" onclick="applyGrayscale()">
-                                    <p>Grayscale</p>
-                                </div>
-                                <div class="filter-img">
-                                    <img src="Gallery/<?php echo $_REQUEST['img'] ?>" width="100" id="sepia" style="filter: sepia(100%)" onclick="applySepia()">
-                                    <p>Sepia</p>
-                                </div>
-                                <div class="filter-img">
-                                    <img src="Gallery/<?php echo $_REQUEST['img'] ?>" width="100" id="invert" style="filter: invert(100%)" onclick="applyInvert()">
-                                    <p>Invert</p>
-                                </div>
+                                    <div class="filter-img">
+                                        <img src="Gallery/<?php echo $originalImage ?>" width="100" id="original"  onclick="applyOriginal()">
+                                        <p>Original</p>
+                                    </div>
+                                    <div class="filter-img">
+                                        <img src="Gallery/<?php echo $originalImage ?>" width="100" id="grayscale" style="filter: grayscale(1)" onclick="applyGrayscale()">
+                                        <p>Grayscale</p>
+                                    </div>
+                                    <div class="filter-img">
+                                        <img src="Gallery/<?php echo $originalImage ?>" width="100" id="sepia" style="filter: sepia(100%)" onclick="applySepia()">
+                                        <p>Sepia</p>
+                                    </div>
+                                    <div class="filter-img">
+                                        <img src="Gallery/<?php echo $originalImage ?>" width="100" id="invert" style="filter: invert(100%)" onclick="applyInvert()">
+                                        <p>Invert</p>
+                                    </div>
+
                                 </div>
                             </div>
 
@@ -74,16 +76,16 @@ define("GALLERY_PATH", $_SERVER['DOCUMENT_ROOT'] . "/Gallery");
                             <div class="adjust">
                                 <div class="form-group">
                                     <label>Exposure</label>
-                                    <input type="range" value="1" onchange="applyFilter()" oninput="applyFilter()" data-filter="brightness" data-scale="%" step="1" min="0" max="200">
+                                    <input type="range" value="1" onchange="applyFilter()" oninput="applyFilter()" data-filter="brightness" data-scale="%" step="1" min="1" max="200">
                                 </div>
                                 <div class="form-group">
                                     <label>Contrast</label>
-                                    <input type="range" value="0" onchange="applyFilter()" oninput="applyFilter()" data-filter="contrast" data-scale="%" step="1" min="0" max="200">
+                                    <input type="range" value="1" onchange="applyFilter()" oninput="applyFilter()" data-filter="contrast" data-scale="%" step="1" min="1" max="200">
                                 </div>
 
                                 <div class="form-group">
                                     <label>Saturation</label>
-                                    <input type="range" value="0" onchange="applyFilter()" oninput="applyFilter()" data-filter="saturate" data-scale="%" step="1" min="0" max="100">
+                                    <input type="range" value="1" onchange="applyFilter()" oninput="applyFilter()" data-filter="saturate" data-scale="%" step="1" min="1" max="100">
                                 </div>
 
 

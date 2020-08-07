@@ -25,16 +25,25 @@ function applyFilter() {
  */
 function applyOriginal(){
     let image = document.getElementById("image");
-    image.style.filter = "";
+    image.style.filter = "none";
 }
+/**
+ *  Filter Grayscale Effect
+ */
 function applyGrayscale(){
     let image = document.getElementById("image");
     image.style.filter = "grayscale(1)";
 }
+/**
+ *  Filter Sepia Effect
+ */
 function applySepia(){
     let image = document.getElementById("image");
     image.style.filter = "sepia(100%)";
 }
+/**
+ *  Filter Invert Effect
+ */
 function applyInvert(){
     let image = document.getElementById("image");
     image.style.filter = "invert(100%)";
@@ -58,7 +67,9 @@ function saveImage(){
     window.location.href=img;
 
 }
-
+/**
+ *  Rotate Image
+ */
 function Rotate(deg) {
     let element = document.getElementById('image');
 
@@ -102,7 +113,6 @@ function Rotate(deg) {
 const imageURL = image.src;
 
 // crop the source image at various aspect ratios
-
 function makeCrop(aspectRatio){
     crop(imageURL, aspectRatio).then(canvas => {
         editor.appendChild(canvas);
@@ -160,4 +170,4 @@ function crop(url, aspectRatio) {
         inputImage.src = url;
     });
 
-};
+}

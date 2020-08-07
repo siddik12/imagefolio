@@ -79,6 +79,17 @@ header,footer {
     color: #cacaca;
 
 }
+
+/*---------------------*/
+.image {
+    position: relative;
+    width: 100%;
+    background: lightgray;
+    padding: 10px;
+}
+.image img {
+    width: 100%;
+}
 /*-------------------*/
 #drop-area{
     background-color: var(--card-bg-color);
